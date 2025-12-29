@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Interactive Image Gallery</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Image Gallery</h1>
+    </header>
+
+    <div class="gallery-container">
+        <div class="gallery-card">
+            <img id="galleryImage" src="pic1.jpg" alt="Gallery Image">
+            <p class="caption" id="caption">white screen</p>
+
+            <div class="buttons">
+                <button onclick="prevImage()">Previous</button>
+                <button onclick="nextImage()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        GAUTAM.P (25009613)
+    </footer>
+
+    <script>
+        let gallery = [
+            { src: "tumbler.jpg", text: "TUMBLER" },
+            { src: "vali.jpg", text: "VALI" },
+            { src: "cooker.jpg", text: "COOKER" },
+            { src: "jug.jpg", text: "JUG" },
+            { src: "tomato.jpg", text: "POT" },
+            
+        ];
+        let index = 0;
+        function nextImage() {
+            index++;
+            if (index >= gallery.length) {
+                index = 0;
+            }
+            updateImage();
+        }
+        function prevImage() {
+            index--;
+            if (index < 0) {
+                index = gallery.length - 1;
+            }
+            updateImage();
+        }
+        function updateImage() {
+            document.getElementById("galleryImage").src = gallery[index].src;
+            document.getElementById("caption").innerText = gallery[index].text;
+        }
+    </script>
+</body>
+</html>
